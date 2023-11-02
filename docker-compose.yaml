@@ -14,3 +14,5 @@ services:
       - "80:80"
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf  # Bind mount the nginx.conf file
+    depends_on:
+      - flask-app
