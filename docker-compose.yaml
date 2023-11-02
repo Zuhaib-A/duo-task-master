@@ -7,7 +7,7 @@ services:
     ports:
       - "5000:5000"
     volumes:
-      - ./app:/app  # Mount the Flask app directory (change this path as needed)
+      - ./app.py:/app/app.py  # Mount the Flask app file (change this path as needed)
   nginx:
     image: nginx:latest
     ports:
