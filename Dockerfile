@@ -1,12 +1,20 @@
-# Use Python 3.6 or later as a base image
+# Use an official Python runtime as a parent image
+FROM python:3.8-slim
 
-# Copy contents into image
- 
-# Install pip dependencies from requirements
+# Set the working directory in the container
+WORKDIR /app
 
-# Set YOUR_NAME environment variable
+# Copy the requirements file into the container
+COPY requirements.txt .
 
-# Expose the correct port
+# Install any needed packages specified in requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Create an entrypoint
+# Copy the rest of your application's source code into the container
+COPY . .
 
+# Expose a port the application will listen on
+EXPOSE 5000
+
+# Define the command to run your application
+CMD ["python", "app.py"]
