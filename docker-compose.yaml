@@ -5,12 +5,14 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "5000:5000"
+      - target: 5000
+        published: 5000
     volumes:
       - ./app.py:/app/app.py  # Mount the Flask app file (change this path as needed)
   nginx:
     image: nginx:latest
     ports:
-      - "81:81"  # Change port 80 to 81 for the Nginx container
+      - target: 80
+        published: 80
     volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx.conf:/etc/nginx/nginx.conf  # Bind mount the nginx.conf file
